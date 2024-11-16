@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_13_201116) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_15_051544) do
   create_table "days", force: :cascade do |t|
     t.string "day_name"
     t.string "abbreviation"
-    t.string "week_of_date"
+    t.string "day_date"
     t.boolean "is_weekend"
     t.integer "day_position"
+    t.integer "week_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["week_id"], name: "index_days_on_week_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "tactician_id", null: false
+    t.integer "day_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_schedules_on_day_id"
+    t.index ["tactician_id"], name: "index_schedules_on_tactician_id"
   end
 
   create_table "tacticians", force: :cascade do |t|
@@ -32,14 +44,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_13_201116) do
 
   create_table "weeks", force: :cascade do |t|
     t.string "name"
-    t.integer "tactician_id", null: false
-    t.integer "day_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_weeks_on_day_id"
-    t.index ["tactician_id"], name: "index_weeks_on_tactician_id"
   end
 
-  add_foreign_key "weeks", "days"
-  add_foreign_key "weeks", "tacticians"
+  add_foreign_key "schedules", "days"
+  add_foreign_key "schedules", "tacticians"
 end

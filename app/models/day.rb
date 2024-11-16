@@ -1,4 +1,5 @@
 class Day < ApplicationRecord
-  has_many :weeks
-  has_many :tacticians, through: :weeks
+  belongs_to :week
+  has_many :schedules
+  has_many :tacticians, through: :schedules
 end

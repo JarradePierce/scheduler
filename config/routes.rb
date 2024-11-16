@@ -9,16 +9,23 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :weeks do
-    resources :days, only: [:index, :show]
-    resources :tacticians, only: [:index, :show]
+    resources :days do
+      resources :schedules do
+        resources :tacticians, only: [:index, :show, :new, :create]
+      end
+    end
   end
 
-  resources :tacticians do
-     resources :days, only: [:index, :show]
-  end
+  resources :tacticians, only: [:index, :show, :new, :create]
 
-  resources :days do
-    resources :tacticians, only: [:index, :show]
-  end
+  root "weeks#index"
+
+  # resources :tacticians do
+  #    resources :days, only: [:index, :show]
+  # end
+  #
+  # resources :days do
+  #   resources :tacticians, only: [:index, :show]
+  # end
 
 end

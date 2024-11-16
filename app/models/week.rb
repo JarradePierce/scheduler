@@ -1,4 +1,3 @@
 class Week < ApplicationRecord
-  belongs_to :day
-  belongs_to :tactician
+  has_many :days
 end
