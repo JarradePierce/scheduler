@@ -17,14 +17,22 @@ include DaysOfWeekHelper
   def create
     @week = Week.new(week_params)
 
-    if @week.save
-      create_days_of_week(@week.id)
-      format.html { redirect_to week_path(@week), notice: "Week created"}
-        format.json { render :show, status: :created, location: @week}
+    if check_if_monday
+      respond_to do |format|
+        if @week.save
+          create_days_of_week(@week.id)
+          format.html { redirect_to week_path(@week), notice: "Week created"}
+            format.json { render :show, status: :created, location: @week}
+          else
+            format.html { redirect_to new_week_path(@week), notice: "Week creation failed"}
+            format.json { render json: @week.errors, status: :unprocessable_entity }
+          end #end @week.save
+        end #end respond_to
+
       else
         format.html { redirect_to new_week_path(@week), notice: "Week creation failed"}
         format.json { render json: @week.errors, status: :unprocessable_entity }
-      end
+      end # end check if monday
 
     end #end create
 
