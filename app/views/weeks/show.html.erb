@@ -1,3 +1,16 @@
-<ul>
-  <li> <%= @week.name %> </li>
-</ul>
+
+<h5> Week Of: <%= @week.name %> </h5>
+
+
+<div class="container">
+  <div class="row">
+    <% @week_days.each do |day| %>
+      <div class="col-sm">
+        <%= day.day_name %> <br/>
+        <% day.tacticians.each do |tactician| %>
+          <%= tactician.name %> <br/>
+        <% end %>
+     </div>
+    <% end %>
+  </div>
+</div>
