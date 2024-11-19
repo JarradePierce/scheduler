@@ -1,0 +1,2 @@
+class TacticianBadgesController < ApplicationController
+end

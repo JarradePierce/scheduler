@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :badges do
+    resources :tacticians, only: [:index, :show, :new]
+  end
+
+
   resources :tacticians, only: [:index, :show, :new, :create]
 
   root "weeks#index"

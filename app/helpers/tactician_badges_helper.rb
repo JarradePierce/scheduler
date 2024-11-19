@@ -1,0 +1,2 @@
+module TacticianBadgesHelper
+end

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_15_051544) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_18_212823) do
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "date_attained"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "days", force: :cascade do |t|
     t.string "day_name"
     t.string "abbreviation"
@@ -33,10 +40,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_15_051544) do
     t.index ["tactician_id"], name: "index_schedules_on_tactician_id"
   end
 
+  create_table "tactician_badges", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tacticians", force: :cascade do |t|
     t.string "name"
     t.string "contact_info"
-    t.boolean "trained"
     t.boolean "is_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

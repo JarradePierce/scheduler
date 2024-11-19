@@ -33,7 +33,6 @@ include DaysOfWeekHelper
         format.html { redirect_to new_week_path(@week), notice: "Week creation failed"}
         format.json { render json: @week.errors, status: :unprocessable_entity }
       end # end check if monday
-
     end #end create
 
 

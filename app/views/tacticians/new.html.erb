@@ -1,0 +1,8 @@
+<%= form_for @tactician, url: { action: "create" } do |f| %>
+  <%= f.text_field :name, placeholder: "Tactician Name", class: "placeholder" %><br />
+  <%= f.text_field :contact_info, placeholder: "Contact info", class: "placeholder" %><br />
+  <%= f.select :trained, placeholder: "Tactician Name", class: "placeholder" %><br />
+  <%= f.select :is_available, placeholder: "Tactician Name", class: "placeholder" %><br />
+  <%= f.hidden_field :name, value: Date.today %>
+  <button class='placeholder' type='submit'>Create New Week</button>
+<% end %>

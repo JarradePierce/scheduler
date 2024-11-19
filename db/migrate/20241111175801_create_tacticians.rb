@@ -3,7 +3,6 @@ class CreateTacticians < ActiveRecord::Migration[7.1]
     create_table :tacticians do |t|
       t.string :name
       t.string :contact_info
-      t.boolean :trained
       t.boolean :is_available
 
       t.timestamps
