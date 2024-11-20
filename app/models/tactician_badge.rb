@@ -1,4 +1,4 @@
 class TacticianBadge < ApplicationRecord
-  belongs_to :tacticians
-  belongs_to :badges
+  belongs_to :tactician
+  belongs_to :badge
 end

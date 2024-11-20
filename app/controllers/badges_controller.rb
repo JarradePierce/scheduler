@@ -8,4 +8,15 @@ class BadgesController < ApplicationController
     @badge = find_badge
   end
 
+
+  private
+
+  def badges_params
+    params.require(:badges).permit(:name, :date_attained)
+  end
+
+  def find_badge
+    Badge.find(params[:id])
+  end
+
 end

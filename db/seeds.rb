@@ -30,14 +30,26 @@ days = Day.create([
   ]) #end day create
 
 tactician = Tactician.create([
-  {name: "jay", contact_info: "contact", trained: false, is_available: true},
-  {name: "tony", contact_info: "contact", trained: false, is_available: true},
-  {name: "jeff", contact_info: "contact", trained: true, is_available: true},
-  {name: "rav", contact_info: "contact", trained: false, is_available: true},
-  ])# end create tacticians
+  {name: "jay", contact_info: "contact", is_available: true},
+  {name: "tony", contact_info: "contact", is_available: true},
+  {name: "jeff", contact_info: "contact", is_available: true},
+  {name: "rav", contact_info: "contact", is_available: true},
+])# end create tacticians
 
-  @schedules = Schedule.create([
-    {tactician_id: 1, day_id: 1, name: "Foster City"},
-    {tactician_id: 2, day_id: 1, name: "San Francisco"},
-    {tactician_id: 3, day_id: 1, name:"Las Vegas"}
-  ])# end create schedule
+schedules = Schedule.create([
+  {tactician_id: 1, day_id: 1, name: "Foster City"},
+  {tactician_id: 1, day_id: 1, name: "San Francisco"},
+  {tactician_id: 3, day_id: 2, name:"Las Vegas"}
+])# end create schedule
+
+badges = Badge.create([
+  {name: "ZR1", date_attained: Date.today},
+  {name: "ZR2", date_attained: Date.today},
+  {name: "ZR3", date_attained: Date.today}
+]) # end badges create
+
+tactician_badges = TacticianBadge.create([
+  {tactician_id: 1, badge_id: 1},
+  {tactician_id: 2, badge_id: 2},
+  {tactician_id: 3, badge_id: 3}
+])

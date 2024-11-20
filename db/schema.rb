@@ -41,8 +41,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_212823) do
   end
 
   create_table "tactician_badges", force: :cascade do |t|
+    t.integer "tactician_id", null: false
+    t.integer "badge_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["badge_id"], name: "index_tactician_badges_on_badge_id"
+    t.index ["tactician_id"], name: "index_tactician_badges_on_tactician_id"
   end
 
   create_table "tacticians", force: :cascade do |t|
@@ -61,4 +65,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_212823) do
 
   add_foreign_key "schedules", "days"
   add_foreign_key "schedules", "tacticians"
+  add_foreign_key "tactician_badges", "badges"
+  add_foreign_key "tactician_badges", "tacticians"
 end
