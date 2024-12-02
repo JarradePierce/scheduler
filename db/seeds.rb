@@ -30,26 +30,61 @@ days = Day.create([
   ]) #end day create
 
 tactician = Tactician.create([
-  {name: "jay", contact_info: "contact", is_available: true},
-  {name: "tony", contact_info: "contact", is_available: true},
-  {name: "jeff", contact_info: "contact", is_available: true},
-  {name: "rav", contact_info: "contact", is_available: true},
+  {name: "jay", contact_info: "contact", is_available_mon: true,
+  is_available_tue: true,
+  is_available_wed: true,
+  is_available_thur: true,
+  is_available_fri: true,
+  is_available_sat: false,
+  is_available_sun: false},
+
+  {name: "tony", contact_info: "contact",
+    is_available_mon: false,
+    is_available_tue: true,
+    is_available_wed: true,
+    is_available_thur: true,
+    is_available_fri: true,
+    is_available_sat: true,
+    is_available_sun: false},
+
+  {name: "jeff", contact_info: "contact",
+    is_available_mon: true,
+    is_available_tue: true,
+    is_available_wed: true,
+    is_available_thur: true,
+    is_available_fri: false,
+    is_available_sat: false,
+    is_available_sun: true},
+
+  {name: "rav", contact_info: "contact", is_available_mon: true,
+  is_available_tue: true,
+  is_available_wed: true,
+  is_available_thur: true,
+  is_available_fri: true,
+  is_available_sat: false,
+  is_available_sun: false}
 ])# end create tacticians
 
 schedules = Schedule.create([
-  {tactician_id: 1, day_id: 1, name: "Foster City"},
-  {tactician_id: 1, day_id: 1, name: "San Francisco"},
-  {tactician_id: 3, day_id: 2, name:"Las Vegas"}
+  {day_id: 1, schedule_name: "Foster City"},
+  {day_id: 1, schedule_name: "San Francisco"},
+  {day_id: 1, schedule_name:"Las Vegas"}
 ])# end create schedule
 
 badges = Badge.create([
-  {name: "ZR1", date_attained: Date.today},
-  {name: "ZR2", date_attained: Date.today},
-  {name: "ZR3", date_attained: Date.today}
+  {name: "ZR1", date_created: Date.today},
+  {name: "ZR2", date_created: Date.today},
+  {name: "ZR3", date_created: Date.today}
 ]) # end badges create
 
 tactician_badges = TacticianBadge.create([
-  {tactician_id: 1, badge_id: 1},
-  {tactician_id: 2, badge_id: 2},
-  {tactician_id: 3, badge_id: 3}
+  {tactician_id: 1, badge_id: 1, date_attained: Date.today},
+  {tactician_id: 2, badge_id: 2, date_attained: Date.today},
+  {tactician_id: 3, badge_id: 3, date_attained: Date.today}
+])
+
+tactician_schedules = TacticianSchedule.create([
+  {tactician_id: 1, schedule_id: 1},
+  {tactician_id: 2, schedule_id: 2},
+  {tactician_id: 3, schedule_id: 3}
 ])

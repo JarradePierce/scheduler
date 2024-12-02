@@ -1,4 +1,5 @@
 class Schedule < ApplicationRecord
   belongs_to :day
-  belongs_to :tactician
+  has_many :tactician_schedules
+  has_many :tacticians, through: :tactician_schedules
 end

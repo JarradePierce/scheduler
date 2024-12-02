@@ -5,15 +5,15 @@ class DaysController < ApplicationController
     @tacticians_container = []
 
     @days.each do |day|
-      day.tacticians.each do |tactician|
-        @tacticians_container.unshift(tactician)
+      day.schedules.each do |schedule|
+        schedule.schedule_name
       end
     end
   end #index end
 
   def show
     @day = find_day
-    @tacticians = @day.tacticians
+
   end
 
 

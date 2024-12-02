@@ -7,8 +7,8 @@
     <% @week_days.each do |day| %>
       <div class="col-sm">
         <%= day.day_name %> <br/>
-        <% day.tacticians.each do |tactician| %>
-          <%= tactician.name %> <br/>
+        <% day.schedules.each do |schedule| %>
+          <%= schedule.schedule_name %> <br/>
         <% end %>
      </div>
     <% end %>

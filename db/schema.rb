@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_18_212823) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_20_200310) do
   create_table "badges", force: :cascade do |t|
     t.string "name"
-    t.string "date_attained"
+    t.string "date_created"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,28 +31,42 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_212823) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.integer "tactician_id", null: false
+    t.string "schedule_name"
     t.integer "day_id", null: false
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["day_id"], name: "index_schedules_on_day_id"
-    t.index ["tactician_id"], name: "index_schedules_on_tactician_id"
   end
 
   create_table "tactician_badges", force: :cascade do |t|
     t.integer "tactician_id", null: false
     t.integer "badge_id", null: false
+    t.string "date_attained"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["badge_id"], name: "index_tactician_badges_on_badge_id"
     t.index ["tactician_id"], name: "index_tactician_badges_on_tactician_id"
   end
 
+  create_table "tactician_schedules", force: :cascade do |t|
+    t.integer "tactician_id", null: false
+    t.integer "schedule_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_tactician_schedules_on_schedule_id"
+    t.index ["tactician_id"], name: "index_tactician_schedules_on_tactician_id"
+  end
+
   create_table "tacticians", force: :cascade do |t|
     t.string "name"
     t.string "contact_info"
-    t.boolean "is_available"
+    t.boolean "is_available_mon"
+    t.boolean "is_available_tue"
+    t.boolean "is_available_wed"
+    t.boolean "is_available_thur"
+    t.boolean "is_available_fri"
+    t.boolean "is_available_sat"
+    t.boolean "is_available_sun"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,7 +78,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_212823) do
   end
 
   add_foreign_key "schedules", "days"
-  add_foreign_key "schedules", "tacticians"
   add_foreign_key "tactician_badges", "badges"
   add_foreign_key "tactician_badges", "tacticians"
+  add_foreign_key "tactician_schedules", "schedules"
+  add_foreign_key "tactician_schedules", "tacticians"
 end
