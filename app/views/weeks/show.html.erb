@@ -9,6 +9,9 @@
         <%= day.day_name %> <br/>
         <% day.schedules.each do |schedule| %>
           <%= schedule.schedule_name %> <br/>
+          <% schedule.tacticians.each do |tactician| %>
+            <%= tactician.name %><br/ >
+          <% end %>
         <% end %>
      </div>
     <% end %>

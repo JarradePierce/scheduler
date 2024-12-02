@@ -20,7 +20,7 @@ class SchedulesController < ApplicationController
           else
             format.html { redirect_to new_schedule_path(@schedule), notice: "Schedule creation failed"}
             format.json { render json: @schedule.errors, status: :unprocessable_entity }
-          end #end @week.save
+          end #end @schedule.save
         end #end respond_to
     end #end create
 

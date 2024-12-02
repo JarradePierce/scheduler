@@ -11,7 +11,9 @@ include DaysOfWeekHelper
 
   def show
     @week = find_week
+    @tacticians_container = []
     @week_days = @week.days
+  
   end # end show
 
   def create

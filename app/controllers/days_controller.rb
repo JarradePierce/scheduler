@@ -13,7 +13,9 @@ class DaysController < ApplicationController
 
   def show
     @day = find_day
-
+    @day.schedules.each do |schedule|
+      schedule.tacticians
+    end
   end
 
 
